@@ -51,7 +51,7 @@ const VideoDetails = () => {
   //   ;(async () => {
   //     if (!courseSectionData.length) return
   //     if (!courseId && !sectionId && !subSectionId) {
-  //       navigate(`/dashboard/enrolled-courses`)
+  //       navigate(/dashboard/enrolled-courses)
   //     } else {
   //       // console.log("courseSectionData", courseSectionData)
   //       const filteredData = courseSectionData.filter(
@@ -95,6 +95,7 @@ const VideoDetails = () => {
       }
     })();
   }, [courseSectionData, courseEntireData, location.pathname]);
+  
 
   // check if the lecture is the first video of the course
   const isFirstVideo = () => {
@@ -290,21 +291,6 @@ const VideoDetails = () => {
 
       <h1 className="mt-4 text-3xl font-semibold">{videoData?.title}</h1>
       <p className="pt-2 pb-6">{videoData?.description}</p>
-      <div className="text-white">ADD NOTES</div>
-      <textarea
-        id="notes"
-        placeholder="Add Your Notes Here..."
-        {...register("notes", { required: true })}
-        className="form-style resize-x-none min-h-[130px] w-full"
-      />
-       <div className="mt-3 mb-6 flex w-full justify-end gap-x-2">
-          <button
-            className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
-          >
-            Cancel
-          </button>
-          <IconBtn text="Save" />
-        </div>
     </div>
   )
 }

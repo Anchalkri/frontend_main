@@ -11,12 +11,14 @@ import {
   setEntireCourseData,
   setTotalNoOfLectures,
 } from "../slices/viewCourseSlice"
+import NotesModal from "../components/core/ViewCourse/NotesModal"
 
 export default function ViewCourse() {
   const { courseId } = useParams()
   const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const [reviewModal, setReviewModal] = useState(false)
+  const [notesModal, setNotesModal] = useState(false)
 
   useEffect(() => {
     ;(async () => {
@@ -31,13 +33,12 @@ export default function ViewCourse() {
       })
       dispatch(setTotalNoOfLectures(lectures))
     })()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
       <div className="relative flex min-h-[calc(100vh-3.5rem)]">
-        <VideoDetailsSidebar setReviewModal={setReviewModal} />
+        <VideoDetailsSidebar setReviewModal={setReviewModal} setNotesModal={setNotesModal} />
         <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
           <div className="mx-6">
             <Outlet />
@@ -45,6 +46,7 @@ export default function ViewCourse() {
         </div>
       </div>
       {reviewModal && <CourseReviewModal setReviewModal={setReviewModal} />}
+      {notesModal && <NotesModal setNotesModal={setNotesModal} />}
     </>
   )
 }

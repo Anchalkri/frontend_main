@@ -12,6 +12,7 @@ const {
   LOGIN_API,
   RESETPASSTOKEN_API,
   RESETPASSWORD_API,
+  CREATE_NOTE_API,
 } = endpoints
 
 export function sendOtp(email, navigate) {
@@ -175,5 +176,17 @@ export function resetPassword(password, confirmPassword, token) {
       toast.error("Unable to reset password");
     }
     dispatch(setLoading(false));
+  }
+}
+
+export const createNote = async (noteData, token) => {
+  try {
+    const response = await apiConnector("POST", CREATE_NOTE_API, noteData, {
+      Authorization: `Bearer ${token}`,
+    })
+    return response?.data
+  } catch (error) {
+    console.log("CREATE_NOTE_API ERROR:", error)
+    throw error
   }
 }
