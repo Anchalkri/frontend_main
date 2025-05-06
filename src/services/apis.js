@@ -77,7 +77,7 @@
 // export const notesEndpoints = {
 //   CREATE_NOTE_API: "/course/addNote",
 // }
-const BASE_URL = "http://localhost:4000"
+const BASE_URL = "https://backend-main-69nj.onrender.com"
 // https://knowtify-qrtw.onrender.comm
 
 
